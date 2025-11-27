@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -36,9 +36,16 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [slides.length]);
 
+  const scrollToContent = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Images - Full Cover */}
+      {/* Background Images with Parallax Effect */}
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -47,31 +54,23 @@ const Hero = () => {
           }`}
         >
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center scale-105 transition-transform duration-[6000ms]"
             style={{
               backgroundImage: `url(${slide.image})`,
+              transform: currentSlide === index ? "scale(1.05)" : "scale(1)",
             }}
           />
-          {/* Dark overlay for text contrast - adjustable */}
-          <div className="absolute inset-0 bg-black/50" />
+          {/* Gradient overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
       ))}
 
-      {/* Content Overlay */}
+      {/* Content Overlay - Matching navbar padding */}
       <div className="relative z-10 h-full flex items-center">
         <div className="w-full">
-          <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-16">
             <div className="max-w-4xl">
-              {/* Top Tag */}
-              <div
-                className={`mb-6 transition-all duration-700 ${
-                  isLoaded
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-              ></div>
-
-              {/* Category Tag */}
+              {/* Category Tag with modern styling */}
               <div
                 className={`mb-6 transition-all duration-700 delay-100 ${
                   isLoaded
@@ -79,12 +78,12 @@ const Hero = () => {
                     : "opacity-0 translate-y-4"
                 }`}
               >
-                <span className="inline-block px-4 py-2 bg-blue-600 text-white text-sm font-bold uppercase tracking-wider">
+                <span className="inline-flex items-center px-5 py-2.5 bg-blue-600 text-white text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg">
                   {slides[currentSlide].tag}
                 </span>
               </div>
 
-              {/* Main Heading */}
+              {/* Main Heading with better typography */}
               <h1
                 className={`text-white font-black mb-6 transition-all duration-700 delay-200 ${
                   isLoaded
@@ -92,14 +91,14 @@ const Hero = () => {
                     : "opacity-0 translate-y-4"
                 }`}
               >
-                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-4">
+                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] mb-4 drop-shadow-2xl">
                   {slides[currentSlide].title}
                 </span>
               </h1>
 
-              {/* Subtitle */}
+              {/* Subtitle with better contrast */}
               <p
-                className={`text-white/90 text-lg sm:text-xl lg:text-2xl font-light max-w-2xl mb-10 leading-relaxed transition-all duration-700 delay-300 ${
+                className={`text-white text-lg sm:text-xl lg:text-2xl font-light max-w-2xl mb-10 leading-relaxed drop-shadow-lg transition-all duration-700 delay-300 ${
                   isLoaded
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-4"
@@ -108,7 +107,7 @@ const Hero = () => {
                 {slides[currentSlide].subtitle}
               </p>
 
-              {/* CTA Buttons */}
+              {/* CTA Buttons - Improved styling */}
               <div
                 className={`flex flex-col sm:flex-row gap-4 mb-16 transition-all duration-700 delay-400 ${
                   isLoaded
@@ -118,7 +117,7 @@ const Hero = () => {
               >
                 <a
                   href="/services"
-                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-slate-900 font-bold uppercase tracking-wide text-sm hover:bg-blue-600 hover:text-white transition-all duration-300"
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                 >
                   Explore Services
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -126,55 +125,54 @@ const Hero = () => {
 
                 <a
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-transparent border-2 border-white text-white font-bold uppercase tracking-wide text-sm hover:bg-white hover:text-slate-900 transition-all duration-300"
+                  className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/50 text-white font-semibold hover:bg-white hover:text-slate-900 transition-all duration-300 hover:scale-105"
                 >
-                  Get Quote
-                  <ChevronRight className="w-5 h-5" />
+                  Contact Us
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
 
-              {/* Stats */}
+              {/* Stats with improved design */}
               <div
-                className={`grid grid-cols-3 gap-8 max-w-2xl transition-all duration-700 delay-500 ${
+                className={`grid grid-cols-3 gap-6 lg:gap-10 max-w-3xl transition-all duration-700 delay-500 ${
                   isLoaded
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-4"
                 }`}
               >
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <div className="text-4xl lg:text-5xl font-black text-white mb-1">
-                    50+
-                  </div>
-                  <div className="text-xs text-white/70 uppercase tracking-wider font-semibold">
-                    Vessels
-                  </div>
-                </div>
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <div className="text-4xl lg:text-5xl font-black text-white mb-1">
-                    25+
-                  </div>
-                  <div className="text-xs text-white/70 uppercase tracking-wider font-semibold">
-                    Years
+                <div className="group">
+                  <div className="border-l-4 border-blue-500 pl-4 group-hover:border-blue-400 transition-colors">
+                    <div className="text-4xl lg:text-5xl font-black text-white mb-2 drop-shadow-lg">
+                      50+
+                    </div>
+                    <div className="text-xs lg:text-sm text-white/80 uppercase tracking-wider font-semibold">
+                      Vessels
+                    </div>
                   </div>
                 </div>
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <div className="text-4xl lg:text-5xl font-black text-white mb-1">
-                    10K+
+                <div className="group">
+                  <div className="border-l-4 border-blue-500 pl-4 group-hover:border-blue-400 transition-colors">
+                    <div className="text-4xl lg:text-5xl font-black text-white mb-2 drop-shadow-lg">
+                      25+
+                    </div>
+                    <div className="text-xs lg:text-sm text-white/80 uppercase tracking-wider font-semibold">
+                      Years
+                    </div>
                   </div>
-                  <div className="text-xs text-white/70 uppercase tracking-wider font-semibold">
-                    Operations
+                </div>
+                <div className="group">
+                  <div className="border-l-4 border-blue-500 pl-4 group-hover:border-blue-400 transition-colors">
+                    <div className="text-4xl lg:text-5xl font-black text-white mb-2 drop-shadow-lg">
+                      10K+
+                    </div>
+                    <div className="text-xs lg:text-sm text-white/80 uppercase tracking-wider font-semibold">
+                      Operations
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator - Bottom Right */}
-      <div className="absolute bottom-8 right-6 lg:right-12 z-20">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-px h-16 bg-white/30" />
         </div>
       </div>
     </section>

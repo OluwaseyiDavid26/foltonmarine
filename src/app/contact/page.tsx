@@ -1,4 +1,6 @@
 "use client";
+import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
 
 import React, { useState } from "react";
 import { Send, Ship, Sparkles, Mail, MessageSquare } from "lucide-react";
@@ -37,6 +39,7 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+      <Navbar />
       {/* Hero Section with Enhanced Design */}
       <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white py-24 overflow-hidden">
         {/* Animated Background Elements */}
@@ -216,6 +219,7 @@ const ContactPage = () => {
           className="grayscale-[0.3] hover:grayscale-0 transition-all duration-700"
         ></iframe>
       </section>
+      <Footer />
     </div>
   );
 };

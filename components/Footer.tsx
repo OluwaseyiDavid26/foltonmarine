@@ -187,7 +187,6 @@
 // };
 
 // export default Footer;
-
 "use client";
 import React, { useState } from "react";
 import {
@@ -197,6 +196,10 @@ import {
   Instagram,
   Copy,
   Check,
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
 } from "lucide-react";
 
 const Footer = () => {
@@ -248,36 +251,61 @@ const Footer = () => {
 
           {/* Center - Email with Copy */}
           <div className="text-center">
+            <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Folton Marine Services Ltd.
+            </h3>
             <button
               onClick={handleCopyEmail}
-              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-500 hover:to-purple-500 transition-all duration-300 shadow-lg hover:shadow-2xl"
+              className="group relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-500 hover:to-purple-500 transition-all duration-300 shadow-lg hover:shadow-2xl"
             >
               <Copy
-                className={`w-5 h-5 transition-all duration-300 ${
+                className={`w-4 h-4 transition-all duration-300 ${
                   copied ? "scale-0 opacity-0" : "scale-100 opacity-100"
                 }`}
               />
               <Check
-                className={`w-5 h-5 absolute left-8 transition-all duration-300 ${
+                className={`w-4 h-4 absolute left-6 transition-all duration-300 ${
                   copied ? "scale-100 opacity-100" : "scale-0 opacity-0"
                 }`}
               />
-              <span className="font-semibold">info@foltonmarine.ng</span>
+              <span className="font-medium text-sm">info@foltonmarine.ng</span>
             </button>
-            <p className="text-sm text-slate-400 mt-3">
-              {copied ? "Email copied! ✓" : "Click to copy"}
+            <p className="text-xs text-slate-400 mt-2">
+              {copied ? "Copied to clipboard! ✓" : "Quick contact"}
             </p>
           </div>
 
           {/* Right - Contact Info */}
-          <div className="text-center md:text-right">
-            <p className="text-slate-300 font-medium mb-2">Lagos, Nigeria</p>
+          <div className="space-y-4">
+            <div className="flex items-start gap-3">
+              <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0 mt-1" />
+              <p className="text-slate-300 text-sm leading-relaxed">
+                No. 39, B39 Close, Citec Estate, Mbora District, Abuja, FCT
+              </p>
+            </div>
+
+            <a
+              href="mailto:info@foltonmarine.ng"
+              className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors group"
+            >
+              <Mail className="w-5 h-5 text-blue-400 flex-shrink-0" />
+              <span className="text-sm">info@foltonmarine.ng</span>
+            </a>
+
             <a
               href="tel:+2349068445165"
-              className="text-slate-400 hover:text-white transition-colors"
+              className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors group"
             >
-              +234 906 844 5165
+              <Phone className="w-5 h-5 text-blue-400 flex-shrink-0" />
+              <span className="text-sm">09068445165</span>
             </a>
+
+            <div className="flex items-center gap-3">
+              <Clock className="w-5 h-5 text-blue-400 flex-shrink-0" />
+              <p className="text-slate-400 text-sm">
+                Monday - Friday: 9:00 AM to 5:00 PM
+              </p>
+            </div>
           </div>
         </div>
 

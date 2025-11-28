@@ -4,6 +4,7 @@ import About from "../../components/About";
 import Services from "../../components/Services";
 import Contact from "../../components/Contact";
 import Footer from "../../components/Footer";
+import ScrollToTop from "../../components/ScrollToTop";
 export default function Home() {
   return (
     <main>
@@ -13,6 +14,7 @@ export default function Home() {
       <Services />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }

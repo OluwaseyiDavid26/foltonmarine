@@ -116,7 +116,7 @@ const Hero = () => {
                 }`}
               >
                 <a
-                  href="/services"
+                  href="#services"
                   className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                 >
                   Explore Services

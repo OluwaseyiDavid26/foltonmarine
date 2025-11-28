@@ -338,22 +338,19 @@ const AboutPage = () => {
       name: "Kunle Bolodeoku",
       position: "MD/CEO",
       bio: "Kunle is the Chief Executive Officer/ Managing Director of the company. He is charged with the overall responsibility of strategy formulation, performance monitoring and improvement for the company.",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      image: "https://www.foltonmarine.ng/img/kunle.jpg",
     },
     {
       name: "Esther Ogbole",
       position: "Executive Director, Community Relations and Marketing",
       bio: "Ms Ogbole has been Executive Director at FMSL, Nigeria, since its inception in 2016. She graduated with a Bachelor's degree in Social Work and a master's degree in Social Work from Marshall University, WV, USA.",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+      image: "https://www.foltonmarine.ng/img/esther.jpg",
     },
     {
       name: "Samuel Oluwatimilehin",
       position: "Executive Director, Finance and Administration",
       bio: "Samuel oversees the finance and administrative affairs at FMSL. He is a management graduate from the prestigious Warwick Business School, Coventry, UK.",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
+      image: "https://www.foltonmarine.ng/img/samuel.jpg",
     },
     {
       name: "Olusegun Adegbulugbe",
@@ -366,8 +363,7 @@ const AboutPage = () => {
       name: "Admiral Afolabi Macaulay",
       position: "Non-Executive Director",
       bio: "He holds a B.Sc. Hons. in Economics and M.Sc. Hons. in Strategic Studies. He started his career with the Nigerian Navy and retired as a Rear Admiral.",
-      image:
-        "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80",
+      image: "https://www.foltonmarine.ng/img/admiral.jpg",
     },
   ];
 

@@ -182,7 +182,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Our Services", href: "/services" },
+    { name: "Our Services", href: "#services" },
     { name: "Webmail", href: "https://outlook.office365.com", external: true },
     { name: "Contact Us", href: "/contact" },
   ];

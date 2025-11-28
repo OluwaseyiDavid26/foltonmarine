@@ -159,7 +159,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const handleEscape = (e) => {
+    const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setIsMobileMenuOpen(false);
       }

@@ -9,20 +9,20 @@ const Hero = () => {
   const slides = [
     {
       image: "https://www.foltonmarine.ng/img/img1.jpg",
-      tag: "Operations",
+      // tag: "Operations",
       title: "Efficient service delivery",
       subtitle:
         "Professional marine solutions tailored to your operational needs",
     },
     {
       image: "https://www.foltonmarine.ng/img/img2.jpg",
-      tag: "Experience",
+      // tag: "Experience",
       title: "Trusted maritime solutions",
       subtitle: "Decades of experience in offshore operations and logistics",
     },
     {
       image: "https://www.foltonmarine.ng/img/img5.jpg",
-      tag: "Support",
+      // tag: "Support",
       title: "24/7 marine support",
       subtitle: "Always ready to support your operations, any time, anywhere",
     },
@@ -77,11 +77,7 @@ const Hero = () => {
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-4"
                 }`}
-              >
-                <span className="inline-flex items-center px-5 py-2.5 bg-blue-600 text-white text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg">
-                  {slides[currentSlide].tag}
-                </span>
-              </div>
+              ></div>
 
               {/* Main Heading with better typography */}
               <h1

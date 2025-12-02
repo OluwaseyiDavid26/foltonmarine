@@ -11,9 +11,8 @@ const Navbar = () => {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          // Hide navbar after scrolling past hero section (assuming hero is ~100vh)
-          const heroHeight = window.innerHeight;
-          setIsVisible(window.scrollY < heroHeight);
+          // Hide navbar immediately when scrolling past it (80px = navbar height)
+          setIsVisible(window.scrollY < 80);
           ticking = false;
         });
         ticking = true;
@@ -49,7 +48,7 @@ const Navbar = () => {
     { name: "About Us", href: "/about" },
     { name: "Our Services", href: "#services" },
     { name: "Webmail", href: "https://outlook.office365.com", external: true },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Contact Us", href: "/contact", highlighted: true },
   ];
 
   return (
@@ -86,7 +85,9 @@ const Navbar = () => {
                   rel={link.external ? "noopener noreferrer" : undefined}
                   onClick={() => setActiveLink(link.href)}
                   className={`relative text-sm font-medium transition-all duration-300 ${
-                    activeLink === link.href
+                    link.highlighted
+                      ? "px-6 py-2.5 bg-slate-800 text-white rounded-full hover:bg-slate-700 border border-slate-700"
+                      : activeLink === link.href
                       ? "text-white"
                       : "text-white/80 hover:text-white"
                   }`}
@@ -99,14 +100,6 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-
-              {/* CTA Button */}
-              <a
-                href="/contact"
-                className="px-6 py-2.5 bg-orange-500 text-white text-sm font-semibold rounded-full hover:bg-orange-600 transition-all duration-300 shadow-lg"
-              >
-                Get a Quote
-              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -169,8 +162,12 @@ const Navbar = () => {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className={`block px-4 py-3 text-white/90 hover:text-white font-medium hover:bg-white/10 rounded-lg transition-all duration-200 ${
-                      activeLink === link.href ? "bg-white/10 text-white" : ""
+                    className={`block px-4 py-3 font-medium rounded-lg transition-all duration-200 ${
+                      link.highlighted
+                        ? "bg-slate-800 text-white hover:bg-slate-700 border border-slate-700 text-center"
+                        : activeLink === link.href
+                        ? "bg-white/10 text-white"
+                        : "text-white/90 hover:text-white hover:bg-white/10"
                     }`}
                     onClick={() => {
                       setActiveLink(link.href);
@@ -187,14 +184,6 @@ const Navbar = () => {
                     {link.name}
                   </a>
                 ))}
-
-                <a
-                  href="/contact"
-                  className="block mt-4 px-4 py-3 bg-orange-500 text-white text-center font-semibold rounded-full hover:bg-orange-600 transition-all duration-200 shadow-lg"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Get a Quote
-                </a>
               </nav>
 
               {/* Mobile Menu Footer */}

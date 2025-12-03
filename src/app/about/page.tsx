@@ -397,7 +397,7 @@ const AboutPage = () => {
             <div>
               <div className="inline-flex items-center gap-2 text-sm text-slate-400 mb-6">
                 <MapPin className="w-4 h-4" />
-                <span>Lagos, Nigeria</span>
+                <span>Abuja, Nigeria</span>
                 <span className="text-slate-600">|</span>
                 <Calendar className="w-4 h-4" />
                 <span>Est. 2016</span>

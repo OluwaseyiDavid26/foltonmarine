@@ -46,7 +46,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Our Services", href: "#services" },
+    { name: "Our Services", href: "/#services" }, // Changed from "#services"
     { name: "Webmail", href: "https://outlook.office365.com", external: true },
     { name: "Contact Us", href: "/contact", highlighted: true },
   ];
@@ -148,7 +148,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Panel */}
           <div
-            className={`absolute top-0 right-0 w-full sm:w-80 h-full bg-slate-900/95 backdrop-blur-xl shadow-2xl transition-transform duration-300 ${
+            className={`absolute top-0 right-0 w-full sm:w-80 h-full bg-slate-900/95 backdrop shadow-2xl transition-transform duration-300 ${
               isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
             onClick={(e) => e.stopPropagation()}

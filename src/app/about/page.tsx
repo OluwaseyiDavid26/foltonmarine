@@ -286,7 +286,7 @@ import {
 
 const AboutPage = () => {
   const [activeTab, setActiveTab] = useState("vision");
-  const [hoveredMember, setHoveredMember] = useState(null);
+  const [hoveredMember, setHoveredMember] = useState<number | null>(null);
 
   const strategyPillars = [
     {

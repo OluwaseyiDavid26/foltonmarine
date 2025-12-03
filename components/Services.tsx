@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface Service {
   id: number;
@@ -10,6 +10,8 @@ interface Service {
 
 const ModernServicesSection = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const services: Service[] = [
     {
@@ -44,12 +46,41 @@ const ModernServicesSection = () => {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cards = entry.target.querySelectorAll("[data-card-id]");
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                const cardId = parseInt(
+                  card.getAttribute("data-card-id") || "0"
+                );
+                setVisibleCards((prev) => [...new Set([...prev, cardId])]);
+              }, index * 150);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const isVisible = (id: number) => visibleCards.includes(id);
+
   return (
     <div className="min-h-screen bg-slate-50" id="services">
-      {/* Hero Section - Centered */}
-      <div className=" border-b">
+      {/* Hero Section - Centered with Fade In Animation */}
+      <div className="border-b">
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="max-w-3xl mx-auto space-y-4 animate-fadeInUp">
             <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
               What We Offer
             </p>
@@ -65,13 +96,18 @@ const ModernServicesSection = () => {
         </div>
       </div>
 
-      {/* Services Grid - Creative Layout */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
+      {/* Services Grid - Creative Layout with Scroll Animations */}
+      <div className="max-w-7xl mx-auto px-6 py-20" ref={sectionRef}>
         {/* First Row - Large + Small */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* Large Featured Card */}
           <div
-            className="md:col-span-2 relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl h-96 transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
+            data-card-id={services[0].id}
+            className={`md:col-span-2 relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl h-96 transform transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl ${
+              isVisible(services[0].id)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-12"
+            }`}
             onMouseEnter={() => setHoveredId(services[0].id)}
             onMouseLeave={() => setHoveredId(null)}
           >
@@ -83,7 +119,6 @@ const ModernServicesSection = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
             <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
               <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
-                <div className="w-16 h-1 bg-blue-500 mb-4"></div>
                 <h3 className="text-3xl font-bold mb-3">{services[0].title}</h3>
                 <p
                   className={`text-lg transition-all duration-500 ${
@@ -100,7 +135,12 @@ const ModernServicesSection = () => {
 
           {/* Small Card */}
           <div
-            className="relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl h-96 transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
+            data-card-id={services[1].id}
+            className={`relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl h-96 transform transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl ${
+              isVisible(services[1].id)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-12"
+            }`}
             onMouseEnter={() => setHoveredId(services[1].id)}
             onMouseLeave={() => setHoveredId(null)}
           >
@@ -112,7 +152,6 @@ const ModernServicesSection = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
             <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
               <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
-                <div className="w-12 h-1 bg-blue-500 mb-3"></div>
                 <h3 className="text-2xl font-bold mb-2">{services[1].title}</h3>
                 <p
                   className={`text-sm transition-all duration-500 ${
@@ -132,7 +171,12 @@ const ModernServicesSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* Small Card */}
           <div
-            className="relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl h-96 transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
+            data-card-id={services[2].id}
+            className={`relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl h-96 transform transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl ${
+              isVisible(services[2].id)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-12"
+            }`}
             onMouseEnter={() => setHoveredId(services[2].id)}
             onMouseLeave={() => setHoveredId(null)}
           >
@@ -144,7 +188,6 @@ const ModernServicesSection = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
             <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
               <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
-                <div className="w-12 h-1 bg-blue-500 mb-3"></div>
                 <h3 className="text-2xl font-bold mb-2">{services[2].title}</h3>
                 <p
                   className={`text-sm transition-all duration-500 ${
@@ -161,7 +204,12 @@ const ModernServicesSection = () => {
 
           {/* Large Featured Card */}
           <div
-            className="md:col-span-2 relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl h-96 transform transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl"
+            data-card-id={services[3].id}
+            className={`md:col-span-2 relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl h-96 transform transition-all duration-700 hover:scale-[1.02] hover:shadow-2xl ${
+              isVisible(services[3].id)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-12"
+            }`}
             onMouseEnter={() => setHoveredId(services[3].id)}
             onMouseLeave={() => setHoveredId(null)}
           >
@@ -173,7 +221,6 @@ const ModernServicesSection = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
             <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
               <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
-                <div className="w-16 h-1 bg-blue-500 mb-4"></div>
                 <h3 className="text-3xl font-bold mb-3">{services[3].title}</h3>
                 <p
                   className={`text-lg transition-all duration-500 ${
@@ -192,7 +239,12 @@ const ModernServicesSection = () => {
         {/* Third Row - Full Width */}
         <div className="grid grid-cols-1 gap-6">
           <div
-            className="relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl h-80 transform transition-all duration-500 hover:scale-[1.01] hover:shadow-2xl"
+            data-card-id={services[4].id}
+            className={`relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl h-80 transform transition-all duration-700 hover:scale-[1.01] hover:shadow-2xl ${
+              isVisible(services[4].id)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-12"
+            }`}
             onMouseEnter={() => setHoveredId(services[4].id)}
             onMouseLeave={() => setHoveredId(null)}
           >
@@ -204,7 +256,6 @@ const ModernServicesSection = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
             <div className="absolute inset-0 p-8 flex items-center">
               <div className="max-w-2xl transform transition-transform duration-500 group-hover:-translate-y-2">
-                <div className="w-20 h-1 bg-blue-500 mb-4"></div>
                 <h3 className="text-4xl font-bold mb-4 text-white">
                   {services[4].title}
                 </h3>
@@ -222,6 +273,23 @@ const ModernServicesSection = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 };

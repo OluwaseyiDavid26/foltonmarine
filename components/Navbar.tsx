@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -70,9 +71,14 @@ const Navbar = () => {
               className="relative group flex-shrink-0 z-10"
               aria-label="Folton Marine Services Home"
             >
-              <h1 className="text-white font-bold text-xl lg:text-2xl tracking-tight transition-all duration-300 group-hover:opacity-80">
-                Folton Marine Services
-              </h1>
+              <Image
+                src="/folton.png"
+                alt="Folton Marine Services Logo"
+                width={150}
+                height={60}
+                priority
+                className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+              />
             </a>
 
             {/* Desktop Navigation */}

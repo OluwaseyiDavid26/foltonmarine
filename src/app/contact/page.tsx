@@ -64,7 +64,6 @@ const ContactPage = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="inline-flex items-center gap-3 bg-blue-500/20 px-6 py-3 rounded-full mb-8 border border-blue-400/30 backdrop-blur-sm">
-              <Ship className="w-5 h-5 text-blue-300" />
               <span className="text-blue-100 font-medium text-sm uppercase tracking-wider">
                 Let's Connect
               </span>
@@ -114,7 +113,7 @@ const ContactPage = () => {
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-gray-50 hover:bg-white"
-                      placeholder="John Doe"
+                      placeholder=""
                       required
                     />
                   </div>
@@ -133,7 +132,7 @@ const ContactPage = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-gray-50 hover:bg-white"
-                      placeholder="090XXXXXXXX"
+                      placeholder=""
                       required
                     />
                   </div>
@@ -153,7 +152,7 @@ const ContactPage = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-gray-50 hover:bg-white"
-                    placeholder="john@example.com"
+                    placeholder=""
                     required
                   />
                 </div>
@@ -172,7 +171,7 @@ const ContactPage = () => {
                     onChange={handleChange}
                     rows={6}
                     className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none bg-gray-50 hover:bg-white"
-                    placeholder="Tell us about your maritime needs or any questions you have..."
+                    placeholder=""
                     required
                   ></textarea>
                 </div>

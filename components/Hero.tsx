@@ -136,7 +136,7 @@ const Hero = () => {
                 >
                   <div className="transform transition-all duration-300 hover:scale-110">
                     <div className="text-4xl lg:text-5xl font-black text-white mb-2 drop-shadow-lg">
-                      25+
+                      8+
                     </div>
                     <div className="text-xs lg:text-sm text-white/80 uppercase tracking-wider font-semibold">
                       Years

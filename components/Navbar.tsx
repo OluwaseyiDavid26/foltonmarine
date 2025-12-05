@@ -3,22 +3,16 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const Navbar = () => {
-  const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("/");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    let ticking = false;
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          // Hide navbar immediately when scrolling past it (80px = navbar height)
-          setIsVisible(window.scrollY < 80);
-          ticking = false;
-        });
-        ticking = true;
-      }
+      // Change background after scrolling 100vh (hero section)
+      setIsScrolled(window.scrollY > window.innerHeight);
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -47,7 +41,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
-    { name: "Our Services", href: "/#services" }, // Changed from "#services"
+    { name: "Our Services", href: "/#services" },
     { name: "Webmail", href: "https://outlook.office365.com", external: true },
     { name: "Contact Us", href: "/contact", highlighted: true },
   ];
@@ -55,10 +49,8 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isVisible
-            ? "translate-y-0 opacity-100"
-            : "-translate-y-full opacity-0"
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+          isScrolled ? "bg-slate-900" : "bg-transparent"
         }`}
         role="navigation"
         aria-label="Main navigation"
@@ -154,7 +146,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Panel */}
           <div
-            className={`absolute top-0 right-0 w-full sm:w-80 h-full bg-slate-900/95 backdrop shadow-2xl transition-transform duration-300 ${
+            className={`absolute top-0 right-0 w-full sm:w-80 h-full bg-slate-900 shadow-2xl transition-transform duration-300 ${
               isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
             onClick={(e) => e.stopPropagation()}

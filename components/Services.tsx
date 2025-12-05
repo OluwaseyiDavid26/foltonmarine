@@ -78,7 +78,7 @@ const ModernServicesSection = () => {
   return (
     <div className="min-h-screen bg-slate-50" id="services">
       {/* Hero Section - Centered with Fade In Animation */}
-      <div className="border-b">
+      <div className="">
         <div className="max-w-7xl mx-auto px-6 py-20 text-center">
           <div className="max-w-3xl mx-auto space-y-4 animate-fadeInUp">
             <p className="text-sm font-semibold text-blue-600 uppercase tracking-wider">

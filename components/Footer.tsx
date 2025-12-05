@@ -271,7 +271,7 @@ const Footer = () => {
               <span className="font-medium text-sm">info@foltonmarine.ng</span>
             </button>
             <p className="text-xs text-slate-400 mt-2">
-              {copied ? "Copied to clipboard! ✓" : "Quick contact"}
+              {copied ? "Copied to clipboard! ✓" : ""}
             </p>
           </div>
 

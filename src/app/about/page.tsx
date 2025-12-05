@@ -24,29 +24,25 @@ const AboutPage = () => {
   const strategyPillars = [
     {
       number: "01",
-      title: "Quality Excellence",
+      title: "Quality Standards",
       description: "Operate with the highest quality standards to our clients.",
-      metrics: "99.8% Client Satisfaction",
     },
     {
       number: "02",
       title: "Workforce Development",
       description: "Build a diverse, inclusive and highly skilled workforce.",
-      metrics: "500+ Certified Professionals",
     },
     {
       number: "03",
-      title: "Professional Integrity",
+      title: "Business Conduct",
       description:
         "Conduct business in an open, honest and professional manner.",
-      metrics: "Zero Compliance Issues",
     },
     {
       number: "04",
-      title: "Strategic Partnerships",
+      title: "Partnership Management",
       description:
         "Manage and maintain mutually beneficial long-term partnerships.",
-      metrics: "50+ Industry Partners",
     },
   ];
 

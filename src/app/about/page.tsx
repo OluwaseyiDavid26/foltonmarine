@@ -258,7 +258,7 @@ const AboutPage = () => {
                     {pillar.number}
                   </span>
                   <div className="text-sm font-medium text-blue-600">
-                    {pillar.metrics}
+                    {pillar.number}
                   </div>
                 </div>
 

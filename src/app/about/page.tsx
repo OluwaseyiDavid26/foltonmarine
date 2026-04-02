@@ -709,6 +709,11 @@ const AboutPage = () => {
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    style={
+                      member.image === "/director sam (1).png"
+                        ? { objectPosition: "center 15%" }
+                        : {}
+                    }
                   />
                 </div>
 

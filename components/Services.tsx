@@ -17,31 +17,31 @@ const ModernServicesSection = () => {
     {
       id: 1,
       title: "Security & Patrol Vessels",
-      image: "https://www.foltonmarine.ng/img/img6.jpg",
+      image: "/services1-folton.jpg",
       description: "Advanced maritime security and patrol operations",
     },
     {
       id: 2,
       title: "Tugboats",
-      image: "https://www.foltonmarine.ng/img/img4.jpg",
+      image: "/services2-folton.jpg",
       description: "Professional vessel maneuvering and harbor assistance",
     },
     {
       id: 3,
       title: "Shuttle Tankers",
-      image: "https://www.foltonmarine.ng/img/img5.jpg",
+      image: "/services3-folton.jpg",
       description: "Efficient offshore oil and gas transportation",
     },
     {
       id: 4,
       title: "Terminal Services",
-      image: "https://www.foltonmarine.ng/img/img2.jpg",
+      image: "/services4-folton.jpg",
       description: "Comprehensive port and terminal operations",
     },
     {
       id: 5,
       title: "Ship-To-Ship Services",
-      image: "https://www.foltonmarine.ng/img/img3.jpg",
+      image: "/services5-folton.jpg",
       description: "Safe and efficient cargo transfer operations",
     },
   ];
@@ -55,7 +55,7 @@ const ModernServicesSection = () => {
             cards.forEach((card, index) => {
               setTimeout(() => {
                 const cardId = parseInt(
-                  card.getAttribute("data-card-id") || "0"
+                  card.getAttribute("data-card-id") || "0",
                 );
                 setVisibleCards((prev) => [...new Set([...prev, cardId])]);
               }, index * 150);
@@ -63,7 +63,7 @@ const ModernServicesSection = () => {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {

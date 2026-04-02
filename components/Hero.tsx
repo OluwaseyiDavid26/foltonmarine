@@ -8,18 +8,18 @@ const Hero = () => {
 
   const slides = [
     {
-      image: "https://www.foltonmarine.ng/img/img1.jpg",
+      image: "/hero-1-image.jpg",
       title: "Efficient service delivery",
       subtitle:
         "Professional marine solutions tailored to your operational needs",
     },
     {
-      image: "https://www.foltonmarine.ng/img/img2.jpg",
+      image: "/hero-2-image.jpg",
       title: "Trusted maritime solutions",
       subtitle: "Decades of experience in offshore operations and logistics",
     },
     {
-      image: "https://www.foltonmarine.ng/img/img5.jpg",
+      image: "/hero-3-image.jpg",
       title: "24/7 marine support",
       subtitle: "Always ready to support your operations, any time, anywhere",
     },
